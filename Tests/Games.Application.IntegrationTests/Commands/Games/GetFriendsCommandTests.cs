@@ -42,7 +42,7 @@ namespace Games.Application.IntegrationTests.Commands.Games
         [Test]
         public async Task ShouldReturnGames()
         {
-            var result = await SendAsync(new GetGamesCommand { Search = "search", Sort = "sort", Order = "order", Page = 0, Size = 5 });
+            var result = await SendAsync(new GetGamesCommand { Search = "", Sort = "name", Order = "asc", Page = 0, Size = 5 });
 
             result.Records.Should().Be(7);
             result.Data.Should()

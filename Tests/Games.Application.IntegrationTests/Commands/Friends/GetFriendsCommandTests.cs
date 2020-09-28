@@ -43,7 +43,7 @@ namespace Games.Application.IntegrationTests.Commands.Friends
         [Test]
         public async Task ShouldReturnFriends()
         {
-            var result = await SendAsync(new GetFriendsCommand { Search = "search", Sort = "sort", Order = "order", Page = 0, Size = 5 });
+            var result = await SendAsync(new GetFriendsCommand { Search = "", Sort = "name", Order = "asc", Page = 0, Size = 5 });
 
             result.Records.Should().Be(8);
             result.Data.Should()
