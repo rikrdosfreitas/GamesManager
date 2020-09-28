@@ -22,4 +22,6 @@ jobs:
     - name: Build
       run: dotnet build GamesManager.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test GamesManager.sln --no-restore --verbosity normal
+      run: dotnet test "Tests\Games.Domain.Tests\Games.Domain.Tests.csproj"  --no-restore --verbosity minimal
+      run: dotnet test "Tests\Games.Infrastructure.Tests\Games.Infrastructure.Tests.csproj"--no-restore --verbosity minimal
+      run: dotnet test "Tests\Games.Application.UnitTests\Games.Application.UnitTests.csproj"  --no-restore --verbosity minimal
