@@ -15,10 +15,12 @@ namespace Games.Application.Commands.Friends
             Id = SequentialGuid.NewGuid();
         }
 
-        public CreateFriendCommand(string name)
+        public CreateFriendCommand(string name, string nickname, string email)
         {
             Id = SequentialGuid.NewGuid();
             Name = name;
+            Nickname = nickname;
+            Email = email;
         }
     }
 

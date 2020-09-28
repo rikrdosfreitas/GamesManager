@@ -35,7 +35,7 @@ namespace Games.Application.UnitTests.Commands.Friends
 
             var handler = GetHandler();
 
-            var command = new UpdateFriendCommand { Id = Guid.NewGuid() };
+            var command = new UpdateFriendCommand(Guid.NewGuid(), "teste", "unit", "test@test", null);
 
             FluentActions.Invoking(async () => await handler.Handle(command, default))
                 .Should()
@@ -64,7 +64,7 @@ namespace Games.Application.UnitTests.Commands.Friends
 
             var ver = new byte[] { 0x02 };
 
-            var command = new UpdateFriendCommand { Id = Guid.NewGuid(), Name = "name", Nickname = "nickname", Email = "email", Ver = ver };
+            var command = new UpdateFriendCommand(Guid.NewGuid(), "name", "nickname", "email", ver);
 
             await handler.Handle(command, default);
 

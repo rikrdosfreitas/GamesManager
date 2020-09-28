@@ -35,7 +35,7 @@ namespace Games.Application.UnitTests.Commands.Games
 
             var handler = GetHandler();
 
-            var command = new UpdateGameCommand { Id = Guid.NewGuid() };
+            var command = new UpdateGameCommand(Guid.NewGuid(), "", 0, "", null);
 
             FluentActions.Invoking(async () => await handler.Handle(command, default))
                 .Should()
@@ -64,7 +64,7 @@ namespace Games.Application.UnitTests.Commands.Games
 
             var ver = new byte[] { 0x02 };
 
-            var command = new UpdateGameCommand { Id = Guid.NewGuid(), Name = "name", LaunchYear = 2018, Platform = "platform", Ver = ver };
+            var command = new UpdateGameCommand( Guid.NewGuid(), "name",  2018, "platform", ver);
 
             await handler.Handle(command, default);
 

@@ -33,7 +33,7 @@ namespace Games.Application.UnitTests.Commands.Friends
 
             var handler = GetHandler();
 
-            var command = new CreateFriendCommand("name");
+            var command = new CreateFriendCommand("name", "nickname", "email@email.com");
 
             await handler.Handle(command, default);
 

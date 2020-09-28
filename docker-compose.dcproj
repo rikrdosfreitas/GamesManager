@@ -10,6 +10,7 @@
     <DockerServiceName>identityserver</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="docker-compose.integration-test.yml" />
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>

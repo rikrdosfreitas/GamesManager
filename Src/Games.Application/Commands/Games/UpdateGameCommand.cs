@@ -1,13 +1,23 @@
-﻿using MediatR;
+﻿using System;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using Games.Common.Exceptions;
 using Games.Domain.Entities.GameAggregate;
+using Newtonsoft.Json;
 
 namespace Games.Application.Commands.Games
 {
     public class UpdateGameCommand : GameCommand, IRequest<bool>
     {
+        [JsonConstructor]
+        private UpdateGameCommand() { }
+
+        public UpdateGameCommand(Guid id, string name, int launchYear, string platform, byte[] ver) : base(id, name, launchYear, platform)
+        {
+            Ver = ver;
+        }
+
         public byte[] Ver { get; set; }
     }
 

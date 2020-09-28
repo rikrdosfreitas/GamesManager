@@ -1,13 +1,23 @@
-﻿using MediatR;
+﻿using System;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using Games.Common.Exceptions;
 using Games.Domain.Entities.FriendAggregate;
+using Newtonsoft.Json;
 
 namespace Games.Application.Commands.Friends
 {
     public class UpdateFriendCommand : FriendCommand, IRequest<bool>
     {
+        [JsonConstructor]
+        private UpdateFriendCommand() { }
+
+        public UpdateFriendCommand(Guid id, string name, string nickname, string email, byte[] ver) : base(id, name, nickname, email)
+        {
+            Ver = ver;
+        }
+
         public byte[] Ver { get; set; }
     }
 

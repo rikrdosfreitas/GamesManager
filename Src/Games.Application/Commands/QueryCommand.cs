@@ -1,4 +1,6 @@
-﻿namespace Games.Application.Commands
+﻿using Newtonsoft.Json;
+
+namespace Games.Application.Commands
 {
     public abstract class QueryCommand
     {

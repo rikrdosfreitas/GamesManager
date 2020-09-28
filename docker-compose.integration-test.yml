@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  integration.tests:
+    image: ${DOCKER_REGISTRY-}integrationtests
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      CONNECTION_STRING: "Data Source=sqldata;Initial Catalog=games;User Id=SA; Password=R&nt4lG4m&;MultipleActiveResultSets=True"
+    entrypoint: bash /app/wait_for_it.sh sqldata:1433 -t 0 -- dotnet test Games.Application.IntegrationTests.csproj --no-restore --verbosity minimal
+    depends_on:
+      - sqldata 
+  sqldata:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "R&nt4lG4m&"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1434:1433"

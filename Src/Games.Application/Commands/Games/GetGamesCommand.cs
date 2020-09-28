@@ -6,12 +6,13 @@ using Games.Application.Models.Games;
 using Games.Domain.Entities.GameAggregate;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Games.Application.Commands.Games
 {
     public class GetGamesCommand : QueryCommand, IRequest<ResponseViewModel<GameListViewModel>>
     {
-
+       
     }
 
     public class GetGamesCommandHandler : IRequestHandler<GetGamesCommand, ResponseViewModel<GameListViewModel>>

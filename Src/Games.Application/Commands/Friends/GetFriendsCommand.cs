@@ -6,12 +6,13 @@ using Games.Application.Models.Friends;
 using Games.Domain.Entities.FriendAggregate;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Games.Application.Commands.Friends
 {
     public class GetFriendsCommand : QueryCommand, IRequest<ResponseViewModel<FriendListViewModel>>
     {
-
+        
     }
 
     public class GetFriendsCommandHandler : IRequestHandler<GetFriendsCommand, ResponseViewModel<FriendListViewModel>>

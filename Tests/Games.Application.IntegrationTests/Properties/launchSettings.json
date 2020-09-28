@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Games.Application.IntegrationTests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
