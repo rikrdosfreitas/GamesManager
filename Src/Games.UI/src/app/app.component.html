@@ -1,0 +1,30 @@
+<div id="main">
+  <mat-toolbar color="accent">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/friend']">Friends</button>
+      <button mat-menu-item [routerLink]="['/game']">Games</button>
+    </mat-menu>
+    <span>Games Management</span>
+    <span class="menu-spacer"></span>
+    <div *ngIf="isAuthenticated$ | async as isAuthenticated">
+    <button (click)="login()" mat-icon-button class="example-icon" aria-label=""  *ngIf="!isAuthenticated">
+      <mat-icon>login</mat-icon>
+    </button>    
+    <button (click)="logout()" mat-icon-button class="example-icon" aria-label=""  *ngIf="isAuthenticated">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </div>
+  </mat-toolbar>
+
+  <div class="main_content">
+    <div class="content" style="padding: 20px">
+
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+
+</div>

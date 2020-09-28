@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<UserSecretsId>4f546529-f1ef-41e9-b771-25cbf0e928ac</UserSecretsId>
+		<SonarQubeExclude>true</SonarQubeExclude>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+<div id="game-detail" fxLayout="column" class="mat-elevation-z8" fxFlex="1 0 auto">
+    <div class="header" fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex>
+            <h2>Game Detail</h2>
+        </div>
+    </div>
+    <form name="gameForm" [formGroup]="gameForm" fxLayout="column" novalidate (ngSubmit)="save()" fxFlex="1 0 auto">
+        <div class="form-container">
+            <div fxLayout="row wrap" fxLayout.lt-md="column" class="detail-form">
+                <mat-form-field fxFlex="100">
+                    <input matInput placeholder="Name" formControlName="name" required />
+                    <mat-error *ngIf="f.name.errors && f.name.errors.required">Name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="100">
+                    <input matInput placeholder="Launch Year" formControlName="launchYear" required />
+                    <mat-error *ngIf="f.launchYear.errors && f.launchYear.errors.required">Launch Year is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="100">
+                    <input matInput placeholder="Platform" formControlName="platform" required />
+                    <mat-error *ngIf="f.platform.errors && f.platform.errors.required">Platform is required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="detail-button">
+            <button mat-raised-button type="reset" (click)="cancel()" matTooltip="Cancel changes">Cancel</button>
+            <button mat-raised-button color="primary" [disabled]="gameForm.invalid || gameForm.pristine" matTooltip="Save changes">Save</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,50 @@
+<div fxFlex="1 0 auto" fxLayout="column">
+
+    <div class="search mat-elevation-z8" fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex>
+            <h2>Friends List</h2>
+        </div>
+        <mat-form-field fxFlex="40">
+            <input matInput #search placeholder="Search for friend">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
+
+    <mat-table [dataSource]="datasource" matSort class="mat-elevation-z8 friend-table" fxFlex="1 0 0">
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell fxFlex *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-cell fxFlex *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nickname">
+            <mat-header-cell fxFlex *matHeaderCellDef mat-sort-header> Nick Name </mat-header-cell>
+            <mat-cell fxFlex *matCellDef="let row"> {{row.nickname}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell fxFlex *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+            <mat-cell fxFlex *matCellDef="let row"> {{row.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef fxFlex="120px" mat-sort-header></mat-header-cell>
+            <mat-cell fxFlex="120px" *matCellDef="let row">
+                <button mat-icon-button matTooltip="Editar ambiente" (click)="$event.stopPropagation();edit(row)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Remover ambiente" (click)="$event.stopPropagation();remove(row)">
+                    <mat-icon>delete</mat-icon>
+                </button> </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns;sticky:true;"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple (click)="edit(row)"></mat-row>
+    </mat-table>
+    <mat-paginator class="paginator-footer" [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50]" [showFirstLastButtons]="true"></mat-paginator>
+    <div class="app-footer">
+        <button mat-fab (click)="new()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>

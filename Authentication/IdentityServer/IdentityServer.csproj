@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>c85aa4a7-fc20-4cbb-a0be-5f5f7c9756f0</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..</DockerfileContext>
+		<SonarQubeExclude>true</SonarQubeExclude>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="IdentityServer4" Version="4.0.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+
+		<PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+	</ItemGroup>
+</Project>

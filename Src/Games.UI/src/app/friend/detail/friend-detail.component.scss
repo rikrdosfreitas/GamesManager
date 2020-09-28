@@ -1,0 +1,26 @@
+#friend-detail {
+    .header {
+        padding: 10px 15px;
+    }
+
+    .form-container {
+
+        padding: 5px 15px;
+        flex: 1 0 0;
+
+        .detail-form {
+            margin: 5px 0;
+
+            .mat-form-field {
+                padding: 0px 5px;
+            }
+        }
+    }
+
+    .detail-button {
+        padding: 5px 10px;
+        >button {
+            margin: 5px;
+        }
+    }
+}

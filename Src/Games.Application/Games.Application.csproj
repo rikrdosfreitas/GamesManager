@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<SonarQubeSetting Include="sonar.coverage.exclusions">
+			<Value>**/DependencyInjections.cs</Value>
+		</SonarQubeSetting>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.0.0" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+		<PackageReference Include="MediatR" Version="8.1.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.8" />
+		<PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Games.Common\Games.Common.csproj" />
+		<ProjectReference Include="..\Games.Infrastructure\Games.Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>

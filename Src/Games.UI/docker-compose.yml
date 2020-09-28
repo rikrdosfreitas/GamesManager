@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  gamesui:
+    image: gamesui
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8081:80

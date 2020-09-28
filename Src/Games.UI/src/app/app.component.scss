@@ -1,0 +1,19 @@
+.menu-spacer {
+    flex: 1 1 auto;
+  }
+
+.main_content {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background: #efefef;
+    display: flex;
+
+    .content {
+        flex: 1 1 auto;
+        display: flex;
+
+        > *:not(router-outlet) {
+            flex: 1 1 0%;
+        }
+    }
+}

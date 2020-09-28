@@ -1,0 +1,17 @@
+app-friend-list {
+    .search {
+        padding: 20px 20px 10px 20px;
+        background-color: white;
+    }
+
+    .friend-table {
+        //flex: 1 1 auto;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .paginator-footer {
+        padding-right: 50px;
+    }
+}

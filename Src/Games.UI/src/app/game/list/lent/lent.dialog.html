@@ -1,0 +1,41 @@
+<div id="lent-dialog" class="dialog-content-wrapper">
+  <mat-toolbar matDialogTitle color="accent">
+    <mat-toolbar-row color="accent" fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">Lent Game</span>
+      <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div mat-dialog-content>
+    <form name="lentForm" [formGroup]="lentForm">
+      <div fxLayout="column">
+        <mat-form-field fxFlex="100" style="height: 300px;">
+          <mat-label>Game</mat-label>
+          <input type="text" placeholder="Enter name to search" aria-label="Number" matInput [formControl]="gameCtrl" [matAutocomplete]="game" required>
+          <mat-autocomplete #game="matAutocomplete" [displayWith]="displayGame" (optionSelected)="onGameSelected($event)">
+            <mat-option *ngFor="let option of gameOptions | async" [value]="option">
+              {{option.name}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-error *ngIf="f.game.errors && f.game.errors.required">Game is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="100">
+          <mat-label>Friend</mat-label>
+          <input type="text" placeholder="Enter name to search" aria-label="Number" matInput [formControl]="friendCtrl" [matAutocomplete]="friend" required>
+          <mat-autocomplete #friend="matAutocomplete" [displayWith]="displayFriend" (optionSelected)="onFriendSelected($event)">
+            <mat-option *ngFor="let option of friendOptions | async" [value]="option">
+              {{option.name}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-error *ngIf="f.friend.errors && f.friend.errors.required">Game is required</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions fxLayoutAlign="end center">
+    <button mat-raised-button class="mat-accent mr-16" [disabled]="lentForm.invalid || lentForm.pristine" (click)="save()">Confirm</button>
+  </div>
+</div>

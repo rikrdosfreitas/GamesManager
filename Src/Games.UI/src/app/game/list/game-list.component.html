@@ -1,0 +1,67 @@
+<div fxFlex="1 0 auto" fxLayout="column">
+
+    <div class="search mat-elevation-z8" fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex>
+            <h2>Games List</h2>
+        </div>
+        <mat-form-field fxFlex="40">
+
+            <input matInput #search placeholder="Search for game">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
+
+    <mat-table [dataSource]="datasource" matSort class="mat-elevation-z8 game-table" fxFlex="1 0 0">
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell fxFlex *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-cell fxFlex *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="launch">
+            <mat-header-cell fxFlex *matHeaderCellDef mat-sort-header> Launch Year </mat-header-cell>
+            <mat-cell fxFlex *matCellDef="let row"> {{row.launchYear}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="platform">
+            <mat-header-cell fxFlex *matHeaderCellDef mat-sort-header> Platform </mat-header-cell>
+            <mat-cell fxFlex *matCellDef="let row"> {{row.platform}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+            <mat-header-cell fxFlex *matHeaderCellDef mat-sort-header> State </mat-header-cell>
+            <mat-cell fxFlex *matCellDef="let row"> {{row.state}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef fxFlex="180px" mat-sort-header></mat-header-cell>
+            <mat-cell fxFlex="180px" *matCellDef="let row">
+                <button mat-icon-button matTooltip="Edit game" (click)="$event.stopPropagation();edit(row)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Remove game" (click)="$event.stopPropagation();remove(row)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button  *ngIf="row.state == 'Available'" mat-icon-button matTooltip="Lent game" (click)="$event.stopPropagation();lent(row)">
+                    <mat-icon>call_made</mat-icon>
+                </button>
+
+                <button  *ngIf="row.state == 'Loaned'" mat-icon-button matTooltip="Return game" (click)="$event.stopPropagation();return(row)">
+                    <mat-icon>call_received</mat-icon>
+                </button>
+                <button  *ngIf="row.state == 'Loaned'" mat-icon-button matTooltip="info loaned" (click)="$event.stopPropagation();loanedInfo(row)">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns;sticky:true;"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple (click)="edit(row)"></mat-row>
+    </mat-table>
+    <mat-paginator class="paginator-footer" [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50]" [showFirstLastButtons]="true"></mat-paginator>
+    <div class="app-footer">
+        <button mat-fab (click)="new()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>

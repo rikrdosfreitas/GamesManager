@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+  games.web:
+    image: ${DOCKER_REGISTRY-}gamesweb
+    build:
+      context: ./Src/Games.UI             
+    ports:
+      - "8081:80"
+    depends_on:
+      - games.api
+  games.api:
+    image: ${DOCKER_REGISTRY-}gamesapi
+    build:
+      context: .
+      dockerfile: Src/Games.Api/Dockerfile
+    environment:
+      IDENTITY_AUTHORITY: "http://identityserver"
+      CONNECTION_STRING: "Data Source=sqldata;Initial Catalog=games;User Id=SA; Password=R&nt4lG4m&;MultipleActiveResultSets=True"
+    ports:
+      - "8000:80"
+    depends_on:
+      - sqldata
+      - identityserver
+  identityserver:
+    image: ${DOCKER_REGISTRY-}identityserver
+    build: 
+      context: .
+      dockerfile: Authentication/IdentityServer/Dockerfile
+    environment:
+      ISSUER_URI: "http://identityserver"
+    ports:
+      - "8080:80"                 
+  sqldata:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "R&nt4lG4m&"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1434:1433"

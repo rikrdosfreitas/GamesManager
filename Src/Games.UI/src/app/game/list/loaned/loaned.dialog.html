@@ -1,0 +1,35 @@
+<div id="loaned-dialog" class="dialog-content-wrapper">
+  <mat-toolbar matDialogTitle color="accent">
+    <mat-toolbar-row color="accent" fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">Loaned game info</span>
+      <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div mat-dialog-content>
+    <div fxLayout="row wrap" fxLayout.lt-md="column" *ngIf="data">
+      <div fxFlex="100">
+        <label>Game:</label>
+        <p class="mt-4">{{data.game}}</p>
+      </div>
+      <div fxFlex="100">
+        <label>Platform:</label>
+        <p class="mt-4">{{data.platform}}</p>
+      </div>
+      <div fxFlex="100">
+        <label>Loaned Date:</label>
+        <p class="mt-4">{{data.loanDate | date:'MM/dd/yyyy'}}</p>
+      </div>
+
+      <div fxFlex="100">
+        <label>Friend:</label>
+        <p class="mt-4">{{data.friendName}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions fxLayoutAlign="end center">
+
+  </div>
+</div>
