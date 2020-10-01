@@ -2,7 +2,8 @@
 
 Example of application for controlling game loans to friends.
 
-![.NET Core](https://github.com/rikrdosfreitas/GamesManager/workflows/.NET%20Core/badge.svg)
+![Unit Tests](https://github.com/rikrdosfreitas/GamesManager/workflows/.NET%20Core/badge.svg)
+![Integration Tests](https://github.com/rikrdosfreitas/GamesManager/workflows/Docker/badge.svg)
 
 # Technologies used
 
